@@ -1,0 +1,45 @@
+Here's a sequence of steps to guide you in building the image scraper:
+
+Setup your development environment:
+
+Install Python (version 3.7 or higher).
+Set up a virtual environment to manage dependencies.
+Install required libraries, such as requests, beautifulsoup4, google-api-python-client, Pillow, and opencv-python.
+Create a configuration file:
+
+Convert the YAML file provided earlier into a JSON or Python configuration file.
+Build the input module:
+
+Create a function or class to handle user input, such as the URL, output directory, dataset name, and the maximum number of images.
+Build the scraper module:
+
+Implement the website scraper using BeautifulSoup to parse HTML and extract image URLs.
+Implement the Google search scraper using the Google Custom Search API to perform image search queries and extract image URLs.
+Build the filters module:
+
+Create functions to filter images based on minimum and maximum resolution, aspect ratio, and accepted file formats.
+Build the downloader module:
+
+Implement a function to download images from the extracted URLs, taking into account multi-threading, retries, and timeouts.
+Include a way to check for and filter duplicate image URLs.
+Build the dataset_builder module:
+
+Organize the downloaded images into folders based on the provided directory structure.
+Export metadata (image URLs, dimensions, source) to a file (CSV, JSON, or any other desired format).
+Implement logging:
+
+Set up a logging system to keep track of the scraper's progress, errors, and warnings.
+Test and refine the scraper:
+
+Test the scraper on various websites and Google search queries.
+Refine the code and fix any bugs or issues that arise.
+Documentation:
+
+Write documentation and usage instructions for the image scraper.
+Optional - Build a user interface (UI):
+
+Design and implement a command-line interface (CLI) or a graphical user interface (GUI) for a more user-friendly experience.
+Package and distribute:
+
+Package the image scraper as a Python library or a standalone application.
+Optionally, distribute the scraper through platforms like PyPI or create an executable using tools like PyInstaller.

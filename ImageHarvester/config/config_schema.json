@@ -1,0 +1,54 @@
+{
+    "image_scraper": {
+      "name": "ImageScraper",
+      "version": "1.0",
+      "description": "A Python-based image scraper that downloads images from websites and Google search results.",
+      "author": "Your Name",
+      "features": {
+        "input": {
+          "url": "URL of the website or Google search query",
+          "output_directory": "Directory where the downloaded images will be stored",
+          "dataset_name": "Name of the dataset for organizational purposes",
+          "number_of_images": "Maximum number of images to download (optional)"
+        },
+        "scraper": {
+          "website_scraper": {
+            "html_parser": "HTML parser to use (e.g. BeautifulSoup)",
+            "image_tags": ["img", "picture"],
+            "image_attributes": ["src", "data-src"]
+          },
+          "google_search_scraper": {
+            "custom_search_api_key": "Google API key for the custom search engine",
+            "custom_search_engine_id": "ID of the custom search engine for image search",
+            "query_formatting": "Format the input URL as a Google search query if necessary"
+          }
+        },
+        "filters": {
+          "min_resolution": {
+            "width": "Minimum width of the images to download",
+            "height": "Minimum height of the images to download"
+          },
+          "max_resolution": {
+            "width": "Maximum width of the images to download",
+            "height": "Maximum height of the images to download"
+          },
+          "aspect_ratio": "Aspect ratio range to filter images (e.g. 1:1, 16:9)",
+          "file_formats": ["jpg", "png", "gif"]
+        },
+        "downloader": {
+          "multi_threading": "Enable or disable multi-threading for faster downloads",
+          "max_retries": "Maximum number of retries for failed downloads",
+          "timeout": "Time to wait before aborting a download"
+        },
+        "dataset_builder": {
+          "directory_structure": "Organize downloaded images in folders (e.g. by website or dataset name)",
+          "metadata_export": "Export metadata (e.g. image URLs, dimensions, source) to a file (e.g. CSV, JSON)"
+        },
+        "logging": {
+          "log_level": "Define the level of logging (e.g. INFO, WARNING, ERROR)",
+          "log_file": "Save logs to a file for future reference"
+        }
+      }
+    }
+  }
+  
