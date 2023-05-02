@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/9fb2742d9d2a4c3185e9d5759ee0e533/artifacts
+deleted_time: 1683042804044
+end_time: 1683042546849
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 9fb2742d9d2a4c3185e9d5759ee0e533
+run_name: wistful-carp-178
+run_uuid: 9fb2742d9d2a4c3185e9d5759ee0e533
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683042489483
+status: 4
+tags: []
+user_id: ibad

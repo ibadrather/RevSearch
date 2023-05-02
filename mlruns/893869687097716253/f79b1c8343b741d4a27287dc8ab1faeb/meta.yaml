@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/f79b1c8343b741d4a27287dc8ab1faeb/artifacts
+deleted_time: 1683042804051
+end_time: 1683041774118
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: f79b1c8343b741d4a27287dc8ab1faeb
+run_name: polite-bat-43
+run_uuid: f79b1c8343b741d4a27287dc8ab1faeb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683041773157
+status: 4
+tags: []
+user_id: ibad

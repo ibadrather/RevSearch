@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/8d4c6fe7da80426cae70e5e472d3d3b0/artifacts
+deleted_time: 1683042804050
+end_time: 1683041920846
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 8d4c6fe7da80426cae70e5e472d3d3b0
+run_name: big-doe-403
+run_uuid: 8d4c6fe7da80426cae70e5e472d3d3b0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683041833658
+status: 4
+tags: []
+user_id: ibad

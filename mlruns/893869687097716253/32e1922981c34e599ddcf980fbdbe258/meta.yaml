@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/32e1922981c34e599ddcf980fbdbe258/artifacts
+deleted_time: 1683042804045
+end_time: 1683042427665
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 32e1922981c34e599ddcf980fbdbe258
+run_name: caring-newt-260
+run_uuid: 32e1922981c34e599ddcf980fbdbe258
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683042404204
+status: 4
+tags: []
+user_id: ibad
