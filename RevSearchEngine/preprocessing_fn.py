@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 
 
-def preprocess_fn(image: Image.Image, input_size: tuple) -> np.ndarray:
+def preprocess_fn(image: Image.Image) -> np.ndarray:
     """
     Preprocess an image for ONNX model inference.
 
@@ -13,9 +13,7 @@ def preprocess_fn(image: Image.Image, input_size: tuple) -> np.ndarray:
     Returns:
         numpy.ndarray: The preprocessed image as a NumPy array.
     """
-    img = image.convert("RGB")
-    img = img.resize(input_size, Image.BILINEAR)
-    img_data = np.array(img).transpose(2, 0, 1).astype(np.float32)
+    img_data = np.array(image).transpose(2, 0, 1).astype(np.float32)
     img_data /= 255.0
     img_data = (img_data - 0.5) / 0.5
 

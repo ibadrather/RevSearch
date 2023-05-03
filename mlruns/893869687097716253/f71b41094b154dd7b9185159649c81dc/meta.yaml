@@ -1,8 +1,9 @@
 artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/f71b41094b154dd7b9185159649c81dc/artifacts
+deleted_time: 1683128370888
 end_time: 1683127628734
 entry_point_name: ''
 experiment_id: '893869687097716253'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: f71b41094b154dd7b9185159649c81dc
 run_name: adaptable-bass-227
 run_uuid: f71b41094b154dd7b9185159649c81dc

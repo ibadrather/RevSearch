@@ -10,8 +10,8 @@ def parse_arguments() -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser(description="Train a facial recognition model.")
     parser.add_argument("--epochs", type=int, default=150, help="Number of epochs.")
-    parser.add_argument("--bs", type=int, default=40, help="Batch size.")
-    parser.add_argument("--lr", type=float, default=2.3e-5, help="Learning rate.")
+    parser.add_argument("--bs", type=int, default=50, help="Batch size.")
+    parser.add_argument("--lr", type=float, default=5e-4, help="Learning rate.")
     parser.add_argument("--dropout", type=float, default=0.4, help="Dropout rate.")
     parser.add_argument(
         "--num_classes", type=int, default=100, help="Number of classes."
@@ -57,7 +57,7 @@ def parse_arguments() -> argparse.Namespace:
     )
     # weight decay
     parser.add_argument(
-        "--weight_decay", type=float, default=1e-4, help="Weight decay for optimizer."
+        "--weight_decay", type=float, default=1e-3, help="Weight decay for optimizer."
     )
     # momentum
     parser.add_argument(

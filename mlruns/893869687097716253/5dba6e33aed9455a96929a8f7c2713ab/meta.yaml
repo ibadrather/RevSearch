@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/5dba6e33aed9455a96929a8f7c2713ab/artifacts
+end_time: 1683154858653
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: 5dba6e33aed9455a96929a8f7c2713ab
+run_name: serious-koi-345
+run_uuid: 5dba6e33aed9455a96929a8f7c2713ab
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683142968434
+status: 4
+tags: []
+user_id: ibad

@@ -5,7 +5,8 @@ output = infer_onnx_model("path/to/your/model.onnx", preprocessed_image)
 """
 
 import numpy as np
-import onnxruntime as ort
+import onnxruntime
+from typing import Dict, Tuple
 
 
 def infer_onnx_model(model_path: str, input_data: np.ndarray) -> np.ndarray:
@@ -27,9 +28,9 @@ def infer_onnx_model(model_path: str, input_data: np.ndarray) -> np.ndarray:
     return np.array(prediction)
 
 
-def load_onnx_model(model_path: str):
-    session = ort.InferenceSession(model_path)
+def load_onnx_model(model_path: str) -> Tuple[onnxruntime.InferenceSession, Dict[str, str]]:
+    session = onnxruntime.InferenceSession(model_path)
     input_name = session.get_inputs()[0].name
     output_name = session.get_outputs()[0].name
 
-    return session, input_name, output_name
+    return session, {"input": input_name, "output": output_name}
