@@ -4,6 +4,8 @@ import torch
 import cv2
 import numpy as np
 import os
+# label encoder
+from sklearn.preprocessing import LabelEncoder
 
 
 class StanfordCarDataset(Dataset):
@@ -38,8 +40,19 @@ class StanfordCarDataset(Dataset):
         self, csv_file: str, dataset_dir: str, transforms=None, config: dict = None
     ) -> None:
         # Read the csv file and store the image and mask paths
-        self.data = pd.read_csv(csv_file)[["image_paths", "class"]].values
+        self.data = pd.read_csv(csv_file)
+
+        self.image_paths = self.data["filename"].values
+        self.labels = self.data["class"].values
+
         self.dataset_dir = dataset_dir
+
+        # Label encoder
+        self.label_encoder = LabelEncoder()
+        self.labels = self.label_encoder.fit_transform(self.labels)
+
+        # count the number of classes
+        self.num_classes = len(self.label_encoder.classes_)
 
         if config is None:
             self.image_size = (224, 224)
@@ -58,9 +71,17 @@ class StanfordCarDataset(Dataset):
 
     def __len__(self):
         return len(self.data)
+    
+    # inverse reverse label encoder
+    def inverse_transform(self, labels):
+        return self.label_encoder.inverse_transform(labels)
+    
+    def num_classes(self):
+        return self.num_classes
 
     def __getitem__(self, idx) -> tuple:
-        image_path, label = self.data[idx]
+        image_path = self.image_paths[idx]
+        label = self.labels[idx]
 
         # Load the image
         image = load_image(
@@ -75,6 +96,12 @@ class StanfordCarDataset(Dataset):
                 image=image,
             )
             image = augmented["image"]
+
+        # Normalize the image
+        image = image / 255.0
+
+        # -1 to + 1 normalization
+        image = (image - 0.5) / 0.5
 
         return torch.Tensor(image).permute(2, 0, 1), torch.tensor(label).long()
 
@@ -118,7 +145,6 @@ def display_image(image) -> None:
         image (np.ndarray): Image to be displayed
     """
     import matplotlib
-    from augmentations import albumentation_transforms
 
     matplotlib.use("TkAgg")
     import matplotlib.pyplot as plt
@@ -141,10 +167,10 @@ def test():
 
     os.system("clear")
 
-    data_path = "/home/ibad/Desktop/RevSearch"
+    data_path = "/home/ibad/Desktop/RevSearch/Car196_Combined/images"
 
     train_csv = os.path.join(
-        "/home/ibad/Desktop/RevSearch/StanfordCarsDataset", "train.csv"
+        data_path, "train.csv"
     )
 
     config = dict(
@@ -152,7 +178,7 @@ def test():
         data_augmentation=False,
     )
 
-    dataset = StanfordCarDataset(train_csv, data_path, config=config)
+    dataset = StanfordCarDataset(train_csv, data_path, config=config, transforms=None)
 
     image, label = dataset[0]
 

@@ -6,7 +6,7 @@ from tqdm import tqdm
 from natsort import natsorted
 from sklearn.model_selection import train_test_split
 from PIL import Image
-
+import numpy as np
 
 def clear_console() -> None:
     """Clear the console."""
@@ -258,3 +258,47 @@ def load_data(
         dataset_dir: The directory to save the CSV files.
     """
     save_csvs(train, test, val, dataset_dir)
+
+
+import pandas as pd
+from typing import List
+
+def convert_one_hot_to_labels(input_file: str, filename_col: str, class_label_col: str) -> pd.DataFrame:
+    """
+    Convert a one-hot encoded CSV dataset to a dataset with class labels.
+    
+    Args:
+        input_file (str): Path to the input CSV file with one-hot encoded data.
+        filename_col (str): Name of the column containing the filenames.
+        class_label_col (str): Name of the column to store the class labels.
+    
+    Returns:
+        pd.DataFrame: A DataFrame containing the filename and class label columns.
+    """
+    # Read the input CSV file
+    data = pd.read_csv(input_file)
+
+    # # Ensure that all columns except the filename column are numeric
+    # for col in data.columns:
+    #     if col != filename_col:
+    #         data[col] = pd.to_numeric(data[col], errors='coerce')
+
+    # Initialize an empty list to store the class labels
+    class_labels: List[str] = []
+
+    # Iterate over each row in the dataset
+    for index, row in data.iterrows():
+        # Find the index of the first occurrence of 1 in the row (ignoring the filename column)
+        # Find the index of the first occurrence of 1 in the row (ignoring the filename column)
+        class_label = row.drop(filename_col).index[np.argmax(row.drop(filename_col))]
+
+        class_labels.append(class_label)
+
+    # Add a new column with the class labels
+    data[class_label_col] = class_labels
+
+    # Keep only the filename and class label columns
+    data = data[[filename_col, class_label_col]]
+
+    return data
+

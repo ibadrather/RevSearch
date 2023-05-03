@@ -1,8 +1,9 @@
 artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/d7cc818df979477d97a01f031c987ca5/artifacts
+deleted_time: 1683066184011
 end_time: 1683044864200
 entry_point_name: ''
 experiment_id: '893869687097716253'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: d7cc818df979477d97a01f031c987ca5
 run_name: auspicious-boar-641
 run_uuid: d7cc818df979477d97a01f031c987ca5

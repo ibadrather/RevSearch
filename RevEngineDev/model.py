@@ -42,7 +42,7 @@ class RevSearchFeatureExtractor(nn.Module):
         self.feature_vector_size = feature_vector_size
 
         # Freeze training for all layers but the last 4
-        for feature in features[:-2]:
+        for feature in features[:]:
             for param in feature.parameters():
                 param.requires_grad = False
 
@@ -54,10 +54,16 @@ class RevSearchFeatureExtractor(nn.Module):
             self.features,
             self.pooling,
             nn.Flatten(),
-            nn.Linear(25088, 500),
+            nn.Linear(25088, 3000),
             nn.ReLU(),
             nn.Dropout(self.dropout),
-            nn.Linear(500, self.feature_vector_size),
+            nn.Linear(3000, 1500),
+            nn.ReLU(),
+            nn.Dropout(self.dropout),
+            nn.Linear(1500, 1000),
+            nn.ReLU(),
+            nn.Dropout(self.dropout),
+            nn.Linear(1000, self.feature_vector_size),
         )
 
         self.decoder = nn.Sequential(

@@ -1,8 +1,9 @@
 artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/b928cebb88de4d8397babebc5219498e/artifacts
+deleted_time: 1683066184011
 end_time: 1683042751399
 entry_point_name: ''
 experiment_id: '893869687097716253'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: b928cebb88de4d8397babebc5219498e
 run_name: gregarious-bass-798
 run_uuid: b928cebb88de4d8397babebc5219498e
