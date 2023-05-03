@@ -10,8 +10,8 @@ def parse_arguments() -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser(description="Train a facial recognition model.")
     parser.add_argument("--epochs", type=int, default=50, help="Number of epochs.")
-    parser.add_argument("--bs", type=int, default=80, help="Batch size.")
-    parser.add_argument("--lr", type=float, default=5e-3, help="Learning rate.")
+    parser.add_argument("--bs", type=int, default=50, help="Batch size.")
+    parser.add_argument("--lr", type=float, default=5e-4, help="Learning rate.")
     parser.add_argument("--dropout", type=float, default=0.2, help="Dropout rate.")
     parser.add_argument(
         "--num_classes", type=int, default=100, help="Number of classes."
@@ -45,7 +45,7 @@ def parse_arguments() -> argparse.Namespace:
         default="CrossEntropyLoss",
         help="Loss function to use for training.",
     )
-    parser.add_argument("--arch", type=str, default="VGG16", help="Model architecture.")
+    parser.add_argument("--arch", type=str, default="efficientnet", help="Model architecture.")
     # feature vector size argument
     parser.add_argument(
         "--feature_vector_size",

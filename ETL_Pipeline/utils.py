@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 from PIL import Image
 import numpy as np
 
+
 def clear_console() -> None:
     """Clear the console."""
     os.system("clear")
@@ -263,15 +264,18 @@ def load_data(
 import pandas as pd
 from typing import List
 
-def convert_one_hot_to_labels(input_file: str, filename_col: str, class_label_col: str) -> pd.DataFrame:
+
+def convert_one_hot_to_labels(
+    input_file: str, filename_col: str, class_label_col: str
+) -> pd.DataFrame:
     """
     Convert a one-hot encoded CSV dataset to a dataset with class labels.
-    
+
     Args:
         input_file (str): Path to the input CSV file with one-hot encoded data.
         filename_col (str): Name of the column containing the filenames.
         class_label_col (str): Name of the column to store the class labels.
-    
+
     Returns:
         pd.DataFrame: A DataFrame containing the filename and class label columns.
     """
@@ -301,4 +305,3 @@ def convert_one_hot_to_labels(input_file: str, filename_col: str, class_label_co
     data = data[[filename_col, class_label_col]]
 
     return data
-

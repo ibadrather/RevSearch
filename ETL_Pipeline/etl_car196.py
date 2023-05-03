@@ -1,7 +1,14 @@
 import os
-from utils import clear_console, extract_data, transform_data, load_data, convert_one_hot_to_labels
+from utils import (
+    clear_console,
+    extract_data,
+    transform_data,
+    load_data,
+    convert_one_hot_to_labels,
+)
 import pandas as pd
 from sklearn.model_selection import train_test_split
+
 
 def main():
     os.system("clear")
@@ -24,9 +31,7 @@ def main():
     print("Test: ", len(test_df["class"].value_counts()))
     print("Val: ", len(val_df["class"].value_counts()))
 
-
     # print(sorted(list(train_df["class"].value_counts().keys())))
-
 
     # combine all dataframes
     frames = [train_df, test_df, val_df]
@@ -37,10 +42,14 @@ def main():
 
     # drop classes with less than 10 images
     result = result.groupby("class").filter(lambda x: len(x) > 30)
-    
+
     # train test srtatified split
-    train, test = train_test_split(result, test_size=0.2, stratify=result["class"], random_state=42)
-    test, val = train_test_split(test, test_size=0.5, stratify=test["class"], random_state=42)
+    train, test = train_test_split(
+        result, test_size=0.2, stratify=result["class"], random_state=42
+    )
+    test, val = train_test_split(
+        test, test_size=0.5, stratify=test["class"], random_state=42
+    )
 
     # save the train, test, val dataframes
     train.to_csv("Car196/train.csv", index=False)
@@ -56,9 +65,6 @@ def main():
     print("Train: ", train.shape)
     print("Test: ", test.shape)
     print("Val: ", val.shape)
-
-
-
 
 
 if __name__ == "__main__":

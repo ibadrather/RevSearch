@@ -22,11 +22,11 @@ def objective(trial: Trial) -> float:
 
     # Suggest and Update the default hyperparameters with the suggested hyperparameters
     # default_args.epochs = trial.suggest_int("epochs", 80, 140, step=20)
-    default_args.bs = trial.suggest_int("bs", 50, 70)
-    # default_args.lr = trial.suggest_float("lr", 1e-4, 5e-3, step=2e-4)
-    default_args.dropout = trial.suggest_float("dropout", 0.1, 0.8, step=0.2)
-    # default_args.feature_vector_size = trial.suggest_int(
-    #     "feature_vector_size", 800, 1200, step=200)
+    default_args.bs = trial.suggest_int("bs", 20, 50, step=10)
+    default_args.lr = trial.suggest_float("lr", 1e-6, 5e-5, step=3e-6)
+    # default_args.dropout = trial.suggest_float("dropout", 0.2, 0.4, step=0.2)
+    default_args.feature_vector_size = trial.suggest_int(
+        "feature_vector_size", 800, 1200, step=200)
 
     # Run the training
     train_result = training.main(default_args)
@@ -54,7 +54,7 @@ def save_study(study: Study, trial: Trial, study_name: str) -> None:
 
 def main():
 
-    N_TRIALS = 2
+    N_TRIALS = 5
 
     study_name = "RevEngineDev_optuna_study"
 
@@ -88,10 +88,10 @@ def main():
     with open(study_file, "wb") as f:
         pickle.dump(study, f)
 
-    # Save the best parameters
-    best_params = f"""Best Trial: \n
-    \t Value:  {study.best_trial.value} \n
-    \t Params: {study.best_trial.params} \n
+    best_params = f"""
+    Best Trial:
+        Value:  {study.best_trial.value}
+        Params: {study.best_trial.params}
     """
     print(best_params, file=open("best_params.txt", "w"))
 

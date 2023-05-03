@@ -4,6 +4,7 @@ import torch
 import cv2
 import numpy as np
 import os
+
 # label encoder
 from sklearn.preprocessing import LabelEncoder
 
@@ -71,11 +72,11 @@ class StanfordCarDataset(Dataset):
 
     def __len__(self):
         return len(self.data)
-    
+
     # inverse reverse label encoder
     def inverse_transform(self, labels):
         return self.label_encoder.inverse_transform(labels)
-    
+
     def num_classes(self):
         return self.num_classes
 
@@ -169,9 +170,7 @@ def test():
 
     data_path = "/home/ibad/Desktop/RevSearch/Car196_Combined/images"
 
-    train_csv = os.path.join(
-        data_path, "train.csv"
-    )
+    train_csv = os.path.join(data_path, "train.csv")
 
     config = dict(
         image_size=(224, 224),

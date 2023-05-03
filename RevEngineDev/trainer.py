@@ -88,16 +88,19 @@ def train(
                 if verbose:
                     print("Saving the new best model with val loss: ", best_val_loss)
 
-                save_checkpoint(model, args, epoch, save_dir,device)
+                save_checkpoint(model, args, epoch, save_dir, device)
 
             # Log metrics to MLflow
-            mlflow.log_metrics({
-                'train_loss': train_loss[-1],
-                'train_accuracy': train_acc[-1],
-                'val_loss': val_loss[-1],
-                'val_accuracy': val_acc[-1],
-                'best_val_loss': best_val_loss,
-            }, step=epoch)
+            mlflow.log_metrics(
+                {
+                    "train_loss": train_loss[-1],
+                    "train_accuracy": train_acc[-1],
+                    "val_loss": val_loss[-1],
+                    "val_accuracy": val_acc[-1],
+                    "best_val_loss": best_val_loss,
+                },
+                step=epoch,
+            )
 
             print(
                 f"Train loss: {train_loss[-1] :.4f}, Train Accuracy: {train_acc[-1] :.4f}, "
@@ -140,7 +143,11 @@ def validate_model(
 
 
 def save_checkpoint(
-    model: torch.nn.Module, args: Namespace, epoch: int, save_dir: str, device: torch.device
+    model: torch.nn.Module,
+    args: Namespace,
+    epoch: int,
+    save_dir: str,
+    device: torch.device,
 ) -> None:
     model_name = f"{args.arch}_best.pth"
     model_save_path = osp.join(save_dir, model_name)
@@ -162,6 +169,3 @@ def save_checkpoint(
         warnings.simplefilter("ignore", category=torch.jit.TracerWarning)
         traced_model = torch.jit.trace(model, example_input)
     traced_model.save(model_script_path)
-
-
-

@@ -15,7 +15,7 @@ import torch.optim as optim
 
 from augmentations import AlbumentationsDataAugmentation
 from trainer import train
-from model import RevSearchFeatureExtractor
+from model import RevSearchFeatureExtractorResNet, RevSearchFeatureExtractorVGG16, RevSearchFeatureExtractorEfficientNet
 from dataloading import StanfordCarDataset
 
 import mlflow
@@ -23,6 +23,7 @@ import mlflow
 ROOT_DIR = Path(__file__).resolve().parent
 DATA_DIR = Path("/home/ibad/Desktop/RevSearch/Car196_Combined/images")
 DATASET_DIR = Path("/home/ibad/Desktop/RevSearch/Car196_Combined/images")
+
 
 def main(arg_namespace: Optional[argparse.Namespace] = None) -> float:
     # Clear console
@@ -50,9 +51,9 @@ def main(arg_namespace: Optional[argparse.Namespace] = None) -> float:
         "random_rotate_90": True,
         "transpose": True,
         "medium_augmentations": True,
-        "clahe": True,
+        "clahe": False,
         "random_brightness_contrast": True,
-        "random_gamma": True,
+        "random_gamma": False,
     }
     data_augmentation = AlbumentationsDataAugmentation(
         image_size=args.image_size, options=augmentations
@@ -60,10 +61,10 @@ def main(arg_namespace: Optional[argparse.Namespace] = None) -> float:
     data_augmentation = None
 
     train_dataset = StanfordCarDataset(
-            csv_file=DATA_DIR / "train.csv",
-            dataset_dir=DATASET_DIR,
-            transforms=data_augmentation,
-        )
+        csv_file=DATA_DIR / "train.csv",
+        dataset_dir=DATASET_DIR,
+        transforms=data_augmentation,
+    )
 
     val_dataset = StanfordCarDataset(
         csv_file=DATA_DIR / "val.csv",
@@ -72,11 +73,24 @@ def main(arg_namespace: Optional[argparse.Namespace] = None) -> float:
     )
 
     # Initialize the model
-    model = RevSearchFeatureExtractor(
-        num_classes=train_dataset.num_classes,
-        dropout=args.dropout,
-        feature_vector_size=args.feature_vector_size,
-    )
+    if args.arch == "resnet":
+        model = RevSearchFeatureExtractorResNet(
+            num_classes=train_dataset.num_classes,
+            dropout=args.dropout,
+            feature_vector_size=args.feature_vector_size,
+        )
+    elif args.arch == "vgg16":
+        model = RevSearchFeatureExtractorVGG16(
+            num_classes=train_dataset.num_classes,
+            dropout=args.dropout,
+            feature_vector_size=args.feature_vector_size,
+        )
+    elif args.arch == "efficientnet":
+        model = RevSearchFeatureExtractorEfficientNet(
+            num_classes=train_dataset.num_classes,
+            dropout=args.dropout,
+            feature_vector_size=args.feature_vector_size,
+        )
 
     # Set up the optimizer
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
@@ -108,7 +122,7 @@ def main(arg_namespace: Optional[argparse.Namespace] = None) -> float:
 
         # Train the model
         train_loss, train_acc, val_loss, val_acc, best_val_loss = train(
-                        model=model,
+            model=model,
             train_dataloader=train_dataloader,
             val_dataloader=val_dataloader,
             criterion=loss_fn,

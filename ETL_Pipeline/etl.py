@@ -23,7 +23,7 @@ def main():
     print(test["class"].value_counts())
     print("Val: ")
     print(val["class"].value_counts())
-            
+
     # print unique labels
     print("Train: ")
     print(sorted((train["class"].unique())))
