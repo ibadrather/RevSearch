@@ -98,9 +98,15 @@ def train(
                     "val_loss": val_loss[-1],
                     "val_accuracy": val_acc[-1],
                     "best_val_loss": best_val_loss,
+                    "current_epoch": epoch,
+                    "current_lr": scheduler.get_last_lr()[0],
                 },
                 step=epoch,
             )
+
+            # plot train and val loss, and train and val accuracy and save to MLflow as artifacts
+    
+
 
             print(
                 f"Train loss: {train_loss[-1] :.4f}, Train Accuracy: {train_acc[-1] :.4f}, "
@@ -162,7 +168,7 @@ def save_checkpoint(
     torch.save(save_model, model_save_path)
 
     # Save as TorchScript model
-    model_script_path = osp.join(save_dir, f"{args.arch}_epoch{epoch}.pt")
+    model_script_path = osp.join(save_dir, f"{args.arch}_best.pt")
     example_input = torch.randn(1, 3, 224, 224).to(device)
 
     with warnings.catch_warnings():
