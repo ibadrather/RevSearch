@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/10e2dc3eedf6413fb0510e07c3d8e8a5/artifacts
+deleted_time: 1683077587734
+end_time: 1683077395922
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 10e2dc3eedf6413fb0510e07c3d8e8a5
+run_name: funny-sow-321
+run_uuid: 10e2dc3eedf6413fb0510e07c3d8e8a5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683077382699
+status: 4
+tags: []
+user_id: ibad

@@ -22,11 +22,11 @@ def objective(trial: Trial) -> float:
 
     # Suggest and Update the default hyperparameters with the suggested hyperparameters
     # default_args.epochs = trial.suggest_int("epochs", 80, 140, step=20)
-    default_args.bs = trial.suggest_int("bs", 20, 50, step=10)
-    default_args.lr = trial.suggest_float("lr", 1e-6, 5e-5, step=3e-6)
-    # default_args.dropout = trial.suggest_float("dropout", 0.2, 0.4, step=0.2)
-    default_args.feature_vector_size = trial.suggest_int(
-        "feature_vector_size", 800, 1200, step=200)
+    # default_args.bs = trial.suggest_int("bs", 20, 50, step=10)
+    # default_args.lr = trial.suggest_float("lr", 1e-6, 5e-5, step=3e-6)
+    default_args.dropout = trial.suggest_float("dropout", 0.2, 0.7, step=0.2)
+    # default_args.feature_vector_size = trial.suggest_int(
+    #     "feature_vector_size", 800, 1200, step=200)
 
     # Run the training
     train_result = training.main(default_args)
@@ -37,7 +37,7 @@ def objective(trial: Trial) -> float:
     return train_result
 
 
-def save_study(study: Study, trial: Trial, study_name: str) -> None:
+def save_study(study: Study, trial: Trial, study_name: str, study_dir: str) -> None:
     """
     Saves the study to a file after each trial.
 
@@ -46,7 +46,7 @@ def save_study(study: Study, trial: Trial, study_name: str) -> None:
         trial (Trial): The Optuna trial object.
         study_name (str): The name of the study to save.
     """
-    study_file = f"{study_name}.pkl"
+    study_file = os.path.join(study_dir, f"{study_name}.pkl")
     with open(study_file, "wb") as f:
         pickle.dump(study, f)
     print(f"Saved study after trial {trial.number}")
@@ -54,7 +54,7 @@ def save_study(study: Study, trial: Trial, study_name: str) -> None:
 
 def main():
 
-    N_TRIALS = 5
+    N_TRIALS = 2
 
     study_name = "RevEngineDev_optuna_study"
 

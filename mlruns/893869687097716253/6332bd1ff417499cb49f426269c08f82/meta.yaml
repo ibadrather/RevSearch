@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/6332bd1ff417499cb49f426269c08f82/artifacts
+deleted_time: 1683077212247
+end_time: 1683070042573
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 6332bd1ff417499cb49f426269c08f82
+run_name: upset-kite-612
+run_uuid: 6332bd1ff417499cb49f426269c08f82
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683070041675
+status: 4
+tags: []
+user_id: ibad

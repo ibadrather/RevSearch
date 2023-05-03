@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/7e2d62d3d7d44e9d989687aa0b176670/artifacts
+deleted_time: 1683080425110
+end_time: 1683079763663
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 7e2d62d3d7d44e9d989687aa0b176670
+run_name: redolent-sloth-802
+run_uuid: 7e2d62d3d7d44e9d989687aa0b176670
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683079761005
+status: 4
+tags: []
+user_id: ibad

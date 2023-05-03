@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/843135115df746f68cd2476a1f2070d7/artifacts
+deleted_time: 1683080723916
+end_time: 1683080681979
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 843135115df746f68cd2476a1f2070d7
+run_name: omniscient-rook-628
+run_uuid: 843135115df746f68cd2476a1f2070d7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683080679505
+status: 4
+tags: []
+user_id: ibad

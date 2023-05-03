@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/eca7ffd50af44cefa035895e76acfbc6/artifacts
+deleted_time: 1683080425110
+end_time: 1683079745862
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: eca7ffd50af44cefa035895e76acfbc6
+run_name: efficient-steed-141
+run_uuid: eca7ffd50af44cefa035895e76acfbc6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683079743009
+status: 4
+tags: []
+user_id: ibad

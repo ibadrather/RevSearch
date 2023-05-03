@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/433eb50d7825433e9d6e60bc8e269b20/artifacts
+deleted_time: 1683068492345
+end_time: 1683068434270
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 433eb50d7825433e9d6e60bc8e269b20
+run_name: charming-wasp-690
+run_uuid: 433eb50d7825433e9d6e60bc8e269b20
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683068373559
+status: 4
+tags: []
+user_id: ibad

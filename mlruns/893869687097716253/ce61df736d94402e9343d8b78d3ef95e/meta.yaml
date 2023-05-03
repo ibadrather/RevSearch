@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/ce61df736d94402e9343d8b78d3ef95e/artifacts
+deleted_time: 1683123903254
+end_time: 1683123545537
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: ce61df736d94402e9343d8b78d3ef95e
+run_name: adaptable-donkey-259
+run_uuid: ce61df736d94402e9343d8b78d3ef95e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683123527268
+status: 4
+tags: []
+user_id: ibad

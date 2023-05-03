@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/4547d8b99fa2496a8a5ef25384dbaf61/artifacts
+deleted_time: 1683077212253
+end_time: 1683068643280
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 4547d8b99fa2496a8a5ef25384dbaf61
+run_name: beautiful-finch-914
+run_uuid: 4547d8b99fa2496a8a5ef25384dbaf61
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683068630729
+status: 4
+tags: []
+user_id: ibad

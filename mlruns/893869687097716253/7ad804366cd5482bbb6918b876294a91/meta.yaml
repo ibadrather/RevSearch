@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/7ad804366cd5482bbb6918b876294a91/artifacts
+end_time: 1683126432560
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: 7ad804366cd5482bbb6918b876294a91
+run_name: overjoyed-newt-268
+run_uuid: 7ad804366cd5482bbb6918b876294a91
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683126304004
+status: 4
+tags: []
+user_id: ibad

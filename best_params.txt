@@ -1,0 +1,5 @@
+
+    Best Trial:
+        Value:  1.6014668927636257
+        Params: {'bs': 30, 'feature_vector_size': 800, 'lr': 4.6e-05}
+    

@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/e5654d7475e64a97af89f81af0254fb3/artifacts
+deleted_time: 1683079419478
+end_time: null
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: e5654d7475e64a97af89f81af0254fb3
+run_name: nimble-wasp-900
+run_uuid: e5654d7475e64a97af89f81af0254fb3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683079210203
+status: 1
+tags: []
+user_id: ibad

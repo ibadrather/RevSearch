@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/7b1dba3e742249e7af1f1923c7fbddfc/artifacts
+end_time: 1683111407832
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: 7b1dba3e742249e7af1f1923c7fbddfc
+run_name: kindly-fowl-918
+run_uuid: 7b1dba3e742249e7af1f1923c7fbddfc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683111407505
+status: 3
+tags: []
+user_id: ibad

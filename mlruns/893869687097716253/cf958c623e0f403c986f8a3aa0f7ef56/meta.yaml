@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/cf958c623e0f403c986f8a3aa0f7ef56/artifacts
+end_time: 1683099056193
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: cf958c623e0f403c986f8a3aa0f7ef56
+run_name: carefree-bird-201
+run_uuid: cf958c623e0f403c986f8a3aa0f7ef56
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683093124258
+status: 3
+tags: []
+user_id: ibad

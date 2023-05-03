@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/4a4e0b8073354e068cda82fe3f6789fc/artifacts
+deleted_time: 1683068492352
+end_time: 1683067325872
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 4a4e0b8073354e068cda82fe3f6789fc
+run_name: peaceful-shrew-846
+run_uuid: 4a4e0b8073354e068cda82fe3f6789fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683066972096
+status: 4
+tags: []
+user_id: ibad

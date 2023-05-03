@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/60787573dd9a41229bc2391323a809a6/artifacts
+deleted_time: 1683077212240
+end_time: null
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 60787573dd9a41229bc2391323a809a6
+run_name: rumbling-loon-509
+run_uuid: 60787573dd9a41229bc2391323a809a6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683071458808
+status: 1
+tags: []
+user_id: ibad

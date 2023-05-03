@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/af8eddd3daa3442e9ae5136872eced34/artifacts
+end_time: 1683105217278
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: af8eddd3daa3442e9ae5136872eced34
+run_name: rumbling-panda-662
+run_uuid: af8eddd3daa3442e9ae5136872eced34
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683099056391
+status: 3
+tags: []
+user_id: ibad

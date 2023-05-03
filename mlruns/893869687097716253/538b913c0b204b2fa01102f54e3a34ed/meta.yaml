@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/538b913c0b204b2fa01102f54e3a34ed/artifacts
+end_time: 1683087144420
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: 538b913c0b204b2fa01102f54e3a34ed
+run_name: whimsical-crow-267
+run_uuid: 538b913c0b204b2fa01102f54e3a34ed
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683081208517
+status: 3
+tags: []
+user_id: ibad

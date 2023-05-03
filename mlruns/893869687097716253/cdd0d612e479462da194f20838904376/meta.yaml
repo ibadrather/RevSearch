@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/cdd0d612e479462da194f20838904376/artifacts
+deleted_time: 1683079419478
+end_time: 1683078970823
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: cdd0d612e479462da194f20838904376
+run_name: abrasive-smelt-476
+run_uuid: cdd0d612e479462da194f20838904376
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683078968145
+status: 4
+tags: []
+user_id: ibad

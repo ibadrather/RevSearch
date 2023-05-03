@@ -15,7 +15,11 @@ import torch.optim as optim
 
 from augmentations import AlbumentationsDataAugmentation
 from trainer import train
-from model import RevSearchFeatureExtractorResNet, RevSearchFeatureExtractorVGG16, RevSearchFeatureExtractorEfficientNet
+from model import (
+    RevSearchFeatureExtractorResNet,
+    RevSearchFeatureExtractorVGG16,
+    RevSearchFeatureExtractorEfficientNet,
+)
 from dataloading import StanfordCarDataset
 
 import mlflow
@@ -93,7 +97,10 @@ def main(arg_namespace: Optional[argparse.Namespace] = None) -> float:
         )
 
     # Set up the optimizer
-    optimizer = optim.Adam(model.parameters(), lr=args.lr)
+    optimizer = optim.Adam(
+        model.parameters(), lr=args.lr, weight_decay=args.weight_decay
+    )
+    # optimizer = torch.optim.SGD(model.parameters(), lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
 
     # Set up the loss function
     loss_fn = torch.nn.CrossEntropyLoss()
@@ -102,6 +109,7 @@ def main(arg_namespace: Optional[argparse.Namespace] = None) -> float:
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(
         optimizer, mode="min", factor=0.1, patience=5
     )
+    # scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
 
     # Set the device to be used for training
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")

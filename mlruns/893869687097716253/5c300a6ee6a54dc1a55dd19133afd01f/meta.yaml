@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/5c300a6ee6a54dc1a55dd19133afd01f/artifacts
+deleted_time: 1683079419478
+end_time: 1683078103804
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 5c300a6ee6a54dc1a55dd19133afd01f
+run_name: respected-chimp-19
+run_uuid: 5c300a6ee6a54dc1a55dd19133afd01f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683077521483
+status: 4
+tags: []
+user_id: ibad

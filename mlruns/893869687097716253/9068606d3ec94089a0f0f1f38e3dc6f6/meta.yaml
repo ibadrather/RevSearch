@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/9068606d3ec94089a0f0f1f38e3dc6f6/artifacts
+deleted_time: 1683066798039
+end_time: 1683066590030
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 9068606d3ec94089a0f0f1f38e3dc6f6
+run_name: brawny-wren-59
+run_uuid: 9068606d3ec94089a0f0f1f38e3dc6f6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683066501217
+status: 4
+tags: []
+user_id: ibad

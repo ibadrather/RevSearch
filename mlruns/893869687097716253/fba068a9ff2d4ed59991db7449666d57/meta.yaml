@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/fba068a9ff2d4ed59991db7449666d57/artifacts
+deleted_time: 1683077587729
+end_time: 1683077506624
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: fba068a9ff2d4ed59991db7449666d57
+run_name: grandiose-deer-970
+run_uuid: fba068a9ff2d4ed59991db7449666d57
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683077502720
+status: 4
+tags: []
+user_id: ibad

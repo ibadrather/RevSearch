@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/13a30fd7e1f24aa69b130a799643a914/artifacts
+deleted_time: 1683124085976
+end_time: 1683123948601
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 13a30fd7e1f24aa69b130a799643a914
+run_name: powerful-mule-774
+run_uuid: 13a30fd7e1f24aa69b130a799643a914
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683123558133
+status: 4
+tags: []
+user_id: ibad

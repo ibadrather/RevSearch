@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/d9fa74c4d0dc411995ae296574c9b84d/artifacts
+end_time: 1683126180902
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: d9fa74c4d0dc411995ae296574c9b84d
+run_name: blushing-donkey-148
+run_uuid: d9fa74c4d0dc411995ae296574c9b84d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683119154601
+status: 3
+tags: []
+user_id: ibad

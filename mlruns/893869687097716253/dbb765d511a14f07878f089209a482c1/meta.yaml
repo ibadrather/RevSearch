@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/dbb765d511a14f07878f089209a482c1/artifacts
+end_time: 1683093124254
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: dbb765d511a14f07878f089209a482c1
+run_name: thoughtful-bear-872
+run_uuid: dbb765d511a14f07878f089209a482c1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683093124074
+status: 3
+tags: []
+user_id: ibad

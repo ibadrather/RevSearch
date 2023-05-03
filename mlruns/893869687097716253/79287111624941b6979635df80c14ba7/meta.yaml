@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/79287111624941b6979635df80c14ba7/artifacts
+end_time: 1683119154256
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: 79287111624941b6979635df80c14ba7
+run_name: placid-stoat-385
+run_uuid: 79287111624941b6979635df80c14ba7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683112773456
+status: 3
+tags: []
+user_id: ibad

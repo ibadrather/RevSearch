@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/5de5f5a250e543aba6006f0a87c7cf72/artifacts
+deleted_time: 1683077587729
+end_time: 1683077483111
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 5de5f5a250e543aba6006f0a87c7cf72
+run_name: loud-gnu-270
+run_uuid: 5de5f5a250e543aba6006f0a87c7cf72
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683077478566
+status: 4
+tags: []
+user_id: ibad

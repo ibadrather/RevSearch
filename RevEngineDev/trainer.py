@@ -11,6 +11,7 @@ import os.path as osp
 from argparse import Namespace
 import mlflow
 import warnings
+import torch.onnx
 
 
 def train(
@@ -90,6 +91,9 @@ def train(
 
                 save_checkpoint(model, args, epoch, save_dir, device)
 
+                # Save encoder to ONNX
+                save_encoder_onnx(model, device, save_dir, args)
+
             # Log metrics to MLflow
             mlflow.log_metrics(
                 {
@@ -99,14 +103,12 @@ def train(
                     "val_accuracy": val_acc[-1],
                     "best_val_loss": best_val_loss,
                     "current_epoch": epoch,
-                    "current_lr": scheduler.get_last_lr()[0],
+                    "current_lr": scheduler._last_lr[0],
                 },
                 step=epoch,
             )
 
             # plot train and val loss, and train and val accuracy and save to MLflow as artifacts
-    
-
 
             print(
                 f"Train loss: {train_loss[-1] :.4f}, Train Accuracy: {train_acc[-1] :.4f}, "
@@ -155,6 +157,18 @@ def save_checkpoint(
     save_dir: str,
     device: torch.device,
 ) -> None:
+    """
+    Save a model checkpoint in multiple formats (PyTorch, TorchScript, ONNX).
+
+    Args:
+        model (torch.nn.Module): The model to be saved.
+        args (Namespace): Additional arguments used for naming the saved models.
+        epoch (int): The current epoch number.
+        save_dir (str): The directory where the models will be saved.
+        device (torch.device): The device on which the example input tensor will be allocated.
+    """
+
+    # Save as PyTorch checkpoint
     model_name = f"{args.arch}_best.pth"
     model_save_path = osp.join(save_dir, model_name)
 
@@ -175,3 +189,54 @@ def save_checkpoint(
         warnings.simplefilter("ignore", category=torch.jit.TracerWarning)
         traced_model = torch.jit.trace(model, example_input)
     traced_model.save(model_script_path)
+
+    # Save as ONNX model
+    model_onnx_path = osp.join(save_dir, f"{args.arch}_best.onnx")
+    torch.onnx.export(
+        model,
+        example_input,
+        model_onnx_path,
+        export_params=True,
+        opset_version=10,
+        do_constant_folding=True,
+        input_names=["input"],
+        output_names=["output"],
+        dynamic_axes={
+            "input": {0: "batch_size"},
+            "output": {0: "batch_size"},
+        },
+    )
+
+
+def save_encoder_onnx(
+    model: torch.nn.Module, device: torch.device, save_dir: str, args: Namespace
+) -> None:
+    """
+    Save the encoder part of a model as an ONNX file.
+
+    Args:
+        model (torch.nn.Module): The model with an 'encoder' attribute.
+        save_dir (str): The directory where the ONNX model will be saved.
+        args (Namespace): Additional arguments used to determine input size.
+    """
+
+    save_path = osp.join(save_dir, f"best_encoder_{args.arch}.onnx")
+
+    input_size = (1, 3, args.image_size[0], args.image_size[1])
+
+    encoder = model.encoder
+    example_input = torch.randn(*input_size).to(device)
+    torch.onnx.export(
+        encoder,
+        example_input,
+        save_path,
+        export_params=True,
+        opset_version=10,
+        do_constant_folding=True,
+        input_names=["input"],
+        output_names=["output"],
+        dynamic_axes={
+            "input": {0: "batch_size"},
+            "output": {0: "batch_size"},
+        },
+    )

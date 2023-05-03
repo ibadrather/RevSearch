@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/1187897f2df8480ca6c843cc6c3281a1/artifacts
+deleted_time: 1683077212247
+end_time: 1683070359705
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 1187897f2df8480ca6c843cc6c3281a1
+run_name: defiant-shoat-482
+run_uuid: 1187897f2df8480ca6c843cc6c3281a1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683070357065
+status: 4
+tags: []
+user_id: ibad

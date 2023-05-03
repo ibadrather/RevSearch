@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/1d0544c8debc4e45adbb2ea960aad4ed/artifacts
+deleted_time: 1683068492352
+end_time: 1683067615264
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 1d0544c8debc4e45adbb2ea960aad4ed
+run_name: incongruous-crab-514
+run_uuid: 1d0544c8debc4e45adbb2ea960aad4ed
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683067611808
+status: 4
+tags: []
+user_id: ibad

@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/fcdd8fc1c1c847fc9e44bafd12a7650e/artifacts
+deleted_time: 1683080650808
+end_time: 1683080639805
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: fcdd8fc1c1c847fc9e44bafd12a7650e
+run_name: sedate-penguin-366
+run_uuid: fcdd8fc1c1c847fc9e44bafd12a7650e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683080555180
+status: 4
+tags: []
+user_id: ibad

@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/fe6458ddcbae4c6cb657771400305d62/artifacts
+deleted_time: 1683079419478
+end_time: 1683079202196
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: fe6458ddcbae4c6cb657771400305d62
+run_name: bittersweet-colt-392
+run_uuid: fe6458ddcbae4c6cb657771400305d62
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683079011139
+status: 4
+tags: []
+user_id: ibad

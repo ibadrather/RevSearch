@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/b5514902a57c417f832f1a3834c5225b/artifacts
+deleted_time: 1683077212241
+end_time: null
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: b5514902a57c417f832f1a3834c5225b
+run_name: able-ant-703
+run_uuid: b5514902a57c417f832f1a3834c5225b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683071247324
+status: 1
+tags: []
+user_id: ibad

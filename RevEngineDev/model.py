@@ -102,7 +102,7 @@ class RevSearchFeatureExtractorResNet(nn.Module):
         # Access the ResNet components and freeze training for conv1
         for param in pretrained_model.conv1.parameters():
             param.requires_grad = False
-        
+
         # for param in pretrained_model.layer1.parameters():
         #     param.requires_grad = False
 
@@ -141,8 +141,10 @@ class RevSearchFeatureExtractorResNet(nn.Module):
 
         return x
 
+
 import timm
 import torch.nn as nn
+
 
 class RevSearchFeatureExtractorEfficientNet(nn.Module):
     def __init__(self, num_classes, feature_vector_size=500, dropout=0.2):
@@ -153,7 +155,7 @@ class RevSearchFeatureExtractorEfficientNet(nn.Module):
         self.num_classes = num_classes
 
         # Load the pretrained EfficientNet model
-        pretrained_model = timm.create_model('efficientnet_b0', pretrained=True)
+        pretrained_model = timm.create_model("efficientnet_b0", pretrained=True)
 
         # Access the EfficientNet components and freeze training for the first layer
         for param in pretrained_model.conv_stem.parameters():
@@ -188,8 +190,6 @@ class RevSearchFeatureExtractorEfficientNet(nn.Module):
         x = self.decoder(x)
 
         return x
-
-
 
 
 def main() -> None:

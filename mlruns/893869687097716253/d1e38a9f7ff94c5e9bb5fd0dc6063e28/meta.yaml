@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/d1e38a9f7ff94c5e9bb5fd0dc6063e28/artifacts
+deleted_time: 1683077212239
+end_time: 1683073477789
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: d1e38a9f7ff94c5e9bb5fd0dc6063e28
+run_name: sneaky-mink-685
+run_uuid: d1e38a9f7ff94c5e9bb5fd0dc6063e28
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683072350386
+status: 4
+tags: []
+user_id: ibad

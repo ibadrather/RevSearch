@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/7ba749c393ba40c9908c23a6bb5453da/artifacts
+end_time: 1683126181077
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: 7ba749c393ba40c9908c23a6bb5453da
+run_name: ambitious-hawk-122
+run_uuid: 7ba749c393ba40c9908c23a6bb5453da
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683126180905
+status: 3
+tags: []
+user_id: ibad

@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/91dc291d17d64ec18c77c53f616bc478/artifacts
+deleted_time: 1683077212253
+end_time: 1683069071831
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 91dc291d17d64ec18c77c53f616bc478
+run_name: defiant-sloth-514
+run_uuid: 91dc291d17d64ec18c77c53f616bc478
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683068657015
+status: 4
+tags: []
+user_id: ibad

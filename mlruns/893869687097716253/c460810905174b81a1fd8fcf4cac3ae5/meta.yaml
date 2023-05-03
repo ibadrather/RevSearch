@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/c460810905174b81a1fd8fcf4cac3ae5/artifacts
+deleted_time: 1683081200932
+end_time: 1683081169850
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: c460810905174b81a1fd8fcf4cac3ae5
+run_name: fearless-boar-933
+run_uuid: c460810905174b81a1fd8fcf4cac3ae5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683080691378
+status: 4
+tags: []
+user_id: ibad

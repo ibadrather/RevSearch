@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/d211a6a9def643128e465383b7585743/artifacts
+deleted_time: 1683077212247
+end_time: 1683071065855
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: d211a6a9def643128e465383b7585743
+run_name: big-dolphin-706
+run_uuid: d211a6a9def643128e465383b7585743
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683070453065
+status: 4
+tags: []
+user_id: ibad

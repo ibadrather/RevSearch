@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/d025e60ba3fb425a9b10e60834dfb679/artifacts
+end_time: 1683105217467
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: active
+run_id: d025e60ba3fb425a9b10e60834dfb679
+run_name: invincible-auk-458
+run_uuid: d025e60ba3fb425a9b10e60834dfb679
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683105217281
+status: 3
+tags: []
+user_id: ibad

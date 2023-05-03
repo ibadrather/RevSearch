@@ -1,0 +1,16 @@
+artifact_uri: file:///home/ibad/Desktop/RevSearch/mlruns/893869687097716253/305e0ab4018f4c0aa73af4562b9029a0/artifacts
+deleted_time: 1683077212241
+end_time: null
+entry_point_name: ''
+experiment_id: '893869687097716253'
+lifecycle_stage: deleted
+run_id: 305e0ab4018f4c0aa73af4562b9029a0
+run_name: persistent-steed-577
+run_uuid: 305e0ab4018f4c0aa73af4562b9029a0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683071081123
+status: 1
+tags: []
+user_id: ibad
