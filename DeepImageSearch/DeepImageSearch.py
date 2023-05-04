@@ -13,7 +13,7 @@ from PIL import ImageOps
 import math
 import faiss
 from typing import Callable, Optional
-import onnxruntime
+
 
 class Load_Data:
     """A class for loading data from single/multiple folders or a CSV file"""
@@ -67,9 +67,8 @@ class Search_Setup:
         model_name: str = "vgg19",
         pretrained: bool = True,
         image_count: Optional[int] = None,
-        model: Optional[torch.nn.Module] = None,
-        custom_model_name: Optional[str] = None,
-        preprocess_fn: Optional[Callable] = None,
+        custom_feature_extractor=None,
+        custom_feature_extractor_name: Optional[str] = None,
     ):
         """
         Parameters:
@@ -97,25 +96,28 @@ class Search_Setup:
             image_list[:image_count] if image_count is not None else image_list
         )
 
-        # Create metadata directory
-        metadata_dir = f"metadata-files/{self.model_name}"
-        if metadata_dir not in os.listdir():
-            try:
-                os.makedirs(metadata_dir)
-            except Exception as e:
-                pass
+        # if metadata_dir not in os.listdir():
+        #     try:
+        #         os.makedirs(metadata_dir)
+        #     except Exception as e:
+        #         pass
 
         # Load relevant model
-        if model is None:
+        if custom_feature_extractor is None:
             # Load the pre-trained model and remove the last layer
             print("\033[91m Please wait, model is loading or downloading from server!")
             base_model = timm.create_model(self.model_name, pretrained=self.pretrained)
             self.model = torch.nn.Sequential(*list(base_model.children())[:-1])
             self.model.eval()
             print(f"\033[92m Model loaded successfully: {model_name}")
-        elif model is not None:
-            self.model = model
-            self.model_name = custom_model_name or "custom_model"
+            self.using_custom_feature_extractor = False
+
+        elif custom_feature_extractor is not None:
+            self.model = custom_feature_extractor
+            self.model_name = (
+                custom_feature_extractor_name or "custom_feature_extractor"
+            )
+            self.using_custom_feature_extractor = True
 
         # Define preprocess function
         self.default_transforms = transforms.Compose(
@@ -127,10 +129,10 @@ class Search_Setup:
             ]
         )
 
-        if preprocess_fn is None:
-            self.preprocess_fn = self._default_preprocess_fn
-        else:
-            self.preprocess_fn = preprocess_fn
+        # Create metadata directory
+        # self.metadata_dir = os.path.join(os.getcwd(), "metadata_dir", f"{self.model_name}")
+        self.metadata_dir = os.path.join(os.getcwd(), "metadata_dir")
+        os.makedirs(self.metadata_dir, exist_ok=True)
 
     def _default_preprocess_fn(self, img, transforms=None):
         """Default preprocess function to preprocess the image."""
@@ -139,30 +141,25 @@ class Search_Setup:
         x = Variable(torch.unsqueeze(x, dim=0).float(), requires_grad=False)
         return x
 
-
     def _extract(self, img):
         """Extract features from the image."""
         # Resize and convert the image
         img = img.resize((224, 224))
         img = img.convert("RGB")
 
-        # Preprocess the image
-        x = self.preprocess_fn(img)
+        # Extract features from the image using the custom feature extractor
+        if self.using_custom_feature_extractor:
+            feature = self.model(img)
 
-        # Check if the model is an ONNX model
-        if isinstance(self.model, onnxruntime.InferenceSession):
-            ort_inputs = {self.input_output_names["input"]: x.data.numpy()}
-            feature = self.model.run(None, ort_inputs)[0]
-
-        else:
-            # Extract features using PyTorch model
+        # Extract features from the image using the pre-trained model
+        elif not self.using_custom_feature_extractor:
+            x = self._default_preprocess_fn(img, transforms=self.default_transforms)
             feature = self.model(x)
             feature = feature.data.numpy()
 
         # Normalize the feature vector
         feature = feature.flatten()
         return feature / np.linalg.norm(feature)
-
 
     def _get_feature(self, image_data: list):
         self.image_data = image_data
@@ -184,10 +181,11 @@ class Search_Setup:
         f_data = self._get_feature(self.image_list)
         image_data["features"] = f_data
         image_data = image_data.dropna().reset_index(drop=True)
-        image_data.to_pickle(config.image_data_with_features_pkl(self.model_name))
-        print(
-            f"\033[94m Image Meta Information Saved: [metadata-files/{self.model_name}/image_data_features.pkl]"
-        )
+        image_data.to_pickle(config.image_data_with_features_pkl(self.metadata_dir, self.model_name))
+        # print(
+        #     f"\033[94m Image Meta Information Saved: [metadata-files/{self.model_name}/image_data_features.pkl]"
+        # )
+        print("\033[94m Image Meta Information Saved: [os.path.join(self.metadata_dir, 'image_data_features.pkl')]")
         return image_data
 
     def _start_indexing(self, image_data):
@@ -197,17 +195,17 @@ class Search_Setup:
         index = faiss.IndexFlatL2(d)
         features_matrix = np.vstack(image_data["features"].values).astype(np.float32)
         index.add(features_matrix)  # Add the features matrix to the index
-        faiss.write_index(index, config.image_features_vectors_idx(self.model_name))
-        print(
-            "\033[94m Saved The Indexed File:"
-            + f"[metadata-files/{self.model_name}/image_features_vectors.idx]"
-        )
+        faiss.write_index(index, config.image_features_vectors_idx(self.metadata_dir, self.model_name))
+        # print(
+        #     "\033[94m Saved The Indexed File:"
+        #     + f"[metadata-files/{self.model_name}/image_features_vectors.idx]"
+        # )
 
     def run_index(self):
         """
         Indexes the images in the image_list and creates an index file for fast similarity search.
         """
-        if len(os.listdir(f"metadata-files/{self.model_name}")) == 0:
+        if len(os.listdir(self.metadata_dir)) == 0:
             data = self._start_feature_extraction()
             self._start_indexing(data)
         else:
@@ -220,9 +218,9 @@ class Search_Setup:
                 self._start_indexing(data)
             else:
                 print("\033[93m Meta data already Present, Please Apply Search!")
-                print(os.listdir(f"metadata-files/{self.model_name}"))
+                print(os.listdir(self.metadata_dir))
         self.image_data = pd.read_pickle(
-            config.image_data_with_features_pkl(self.model_name)
+            config.image_data_with_features_pkl(self.metadata_dir, self.model_name)
         )
         self.f = len(self.image_data["features"][0])
 
@@ -237,9 +235,9 @@ class Search_Setup:
         """
         # Load existing metadata and index
         self.image_data = pd.read_pickle(
-            config.image_data_with_features_pkl(self.model_name)
+            config.image_data_with_features_pkl(self.metadata_dir, self.model_name)
         )
-        index = faiss.read_index(config.image_features_vectors_idx(self.model_name))
+        index = faiss.read_index(config.image_features_vectors_idx(self.metadta_dir, self.model_name))
 
         for new_image_path in tqdm(new_image_paths):
             # Extract features from the new image
@@ -263,15 +261,15 @@ class Search_Setup:
             index.add(np.array([feature], dtype=np.float32))
 
         # Save the updated metadata and index
-        self.image_data.to_pickle(config.image_data_with_features_pkl(self.model_name))
-        faiss.write_index(index, config.image_features_vectors_idx(self.model_name))
+        self.image_data.to_pickle(config.image_data_with_features_pkl(self.metadata_dir, self.model_name))
+        faiss.write_index(index, config.image_features_vectors_idx(self.metadta_dir, self.model_name))
 
         print(f"\033[92m New images added to the index: {len(new_image_paths)}")
 
     def _search_by_vector(self, v, n: int):
         self.v = v
         self.n = n
-        index = faiss.read_index(config.image_features_vectors_idx(self.model_name))
+        index = faiss.read_index(config.image_features_vectors_idx(self.metadata_dir, self.model_name))
         D, I = index.search(np.array([self.v], dtype=np.float32), self.n)
         return dict(zip(I[0], self.image_data.iloc[I[0]]["images_paths"].to_list()))
 
@@ -298,7 +296,7 @@ class Search_Setup:
         plt.axis("off")
         plt.title("Input Image", fontsize=18)
         plt.imshow(input_img_resized)
-        plt.show()
+        # plt.show()
 
         query_vector = self._get_query_vector(image_path)
         img_list = list(self._search_by_vector(query_vector, number_of_images).values())
@@ -315,7 +313,8 @@ class Search_Setup:
         fig.tight_layout()
         fig.subplots_adjust(top=0.93)
         fig.suptitle("Similar Result Found", fontsize=22)
-        plt.show(fig)
+        # plt.show(fig)
+        plt.show()
 
     def get_similar_images(self, image_path: str, number_of_images: int = 10):
         """
@@ -344,6 +343,6 @@ class Search_Setup:
             The Panda DataFrame of the metadata file.
         """
         self.image_data = pd.read_pickle(
-            config.image_data_with_features_pkl(self.model_name)
+            config.image_data_with_features_pkl(self.metadata_dir, self.model_name)
         )
         return self.image_data

@@ -5,32 +5,32 @@ output = infer_onnx_model("path/to/your/model.onnx", preprocessed_image)
 """
 
 import numpy as np
-import onnxruntime
+import onnxruntime as ort
+from PIL import Image
 from typing import Dict, Tuple
 
 
-def infer_onnx_model(model_path: str, input_data: np.ndarray) -> np.ndarray:
-    """
-    Perform inference on an ONNX model.
+class CustomFeatureExtractor:
+    def __init__(self, model_path: str):
+        self.model_path = model_path
+        self.session, self.input_name, self.output_name = self.load_onnx_model(model_path)
 
-    Args:
-        model_path (str): The path to the ONNX model file.
-        input_data (numpy.ndarray): The preprocessed image as a NumPy array.
+    @staticmethod
+    def load_onnx_model(model_path: str):
+        session = ort.InferenceSession(model_path)
+        input_name = session.get_inputs()[0].name
+        output_name = session.get_outputs()[0].name
+        return session, input_name, output_name
 
-    Returns:
-        numpy.ndarray: The output of the ONNX model as a NumPy array.
-    """
-    sess = ort.InferenceSession(model_path)
-    input_name = sess.get_inputs()[0].name
-    output_name = sess.get_outputs()[0].name
-    prediction = sess.run([output_name], {input_name: input_data})
+    def preprocess_image(self, image):
+        img_data = np.array(image).transpose(2, 0, 1).astype(np.float32)
+        img_data /= 255.0
+        img_data = (img_data - 0.5) / 0.5
 
-    return np.array(prediction)
+        return img_data[np.newaxis, :, :, :]
 
-
-def load_onnx_model(model_path: str) -> Tuple[onnxruntime.InferenceSession, Dict[str, str]]:
-    session = onnxruntime.InferenceSession(model_path)
-    input_name = session.get_inputs()[0].name
-    output_name = session.get_outputs()[0].name
-
-    return session, {"input": input_name, "output": output_name}
+    def __call__(self, image):
+        img_preprocessed = self.preprocess_image(image)
+        ort_inputs = {self.input_name: np.array(img_preprocessed)}
+        features = self.session.run([self.output_name], ort_inputs)[0]
+        return features

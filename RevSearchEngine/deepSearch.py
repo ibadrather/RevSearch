@@ -14,43 +14,48 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 # Add the parent directory to sys.path
 sys.path.append(parent_dir)
 
-# print the sys.path
-print(sys.path)
+
 
 from DeepImageSearch.DeepImageSearch import Load_Data, Search_Setup
-from preprocessing_fn import preprocess_fn
-from inference_utils import infer_onnx_model, load_onnx_model
-from typing import List
+from inference_utils import CustomFeatureExtractor
 
-# list all the images in the directory and subdirectories
-def list_images(path: str) -> List[str]:
-    images = []
-    for root, dirs, files in os.walk(path):
-        for file in files:
-            if file.endswith((".jpg", ".png", ".jpeg")):
-                images.append(os.path.join(root, file))
-    return images
+os.system("clear")
 
-image_list_all = list_images("Car196_Combined/images")
-image_list = list_images("Car196_Combined/images")[:100]
+
+# Load images from a folder
+image_list_all = Load_Data().from_folder(['Car196_Combined/images'])
+image_list = image_list_all[:]
 
 print("Number of images: ", len(image_list))
 
-onnx_model = load_onnx_model("RevSearchEngine/pretrained_models/efficientnet_2023_05_03-21_42_46/best_encoder_efficientnet.onnx")
+model_path = "RevSearchEngine/pretrained_models/efficientnet_2023_05_03-21_42_46/best_encoder_efficientnet.onnx"
+
+feature_extractor = CustomFeatureExtractor(
+    model_path=model_path,
+)
 
 # Setup search engine
 search_engine = Search_Setup(
     image_list=image_list,
-    custom_model_name="efficientnet-onnx",
-    preprocess_fn=preprocess_fn,
-    model=onnx_model,
+    custom_feature_extractor=feature_extractor,
+    custom_feature_extractor_name = "efficientnet_onnx",
+    # image_count=100,
 )
+
+# Index the images
+search_engine.run_index()
+
+# Get metadata
+metadata = search_engine.get_image_metadata_file()
+# print(metadata.head())
 
 # Get similar images
-similar_images = search_engine.get_similar_images(
-    image_path=image_list_all[0], 
-    number_of_images=9,
-)
+# similar_images = search_engine.get_similar_images(
+#     image_path=image_list_all[3000],
+#     number_of_images=9,
+# )
+
 
 # Plot similar images
-print(similar_images)
+# print(similar_images)
+search_engine.plot_similar_images(image_path = image_list[90],number_of_images=5)
