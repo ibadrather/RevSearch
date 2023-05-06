@@ -53,7 +53,6 @@ def save_study(study: Study, trial: Trial, study_name: str, study_dir: str) -> N
 
 
 def main():
-
     N_TRIALS = 2
 
     study_name = "RevEngineDev_optuna_study"

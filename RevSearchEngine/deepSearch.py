@@ -9,28 +9,6 @@ import os
 import sys
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Get the absolute path of the parent directory of the script
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 

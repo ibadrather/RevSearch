@@ -26,7 +26,6 @@ def train(
     save_dir: str = "",
     verbose: bool = False,
 ) -> Tuple[List[float], List[float], List[float], List[float]]:
-
     start_time = time.time()
 
     model.train()
