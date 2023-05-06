@@ -20,6 +20,7 @@ jobs:
         source_folder: 'RevSearchEngine'
         destination_repo: 'ibadrather/appfolio'
         destination_folder: 'Backend/RevSearchEngine'
+        destination_branch: 'main'  # Add this line
         user_email: 'ibad.rather.ir@gmail.com'
         user_name: 'ibadrather'
         commit_msg: '[GHA] Sync RevSearchEngine to Backend'
