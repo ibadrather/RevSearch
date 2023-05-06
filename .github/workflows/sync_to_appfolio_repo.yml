@@ -6,30 +6,20 @@ on:
       - main  # Replace 'main' with the branch you want to trigger this workflow
 
 jobs:
-  sync:
+  copy-file:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.IBADRATHER_FULL_GITHUB_ACESS_PAT }}
     steps:
-    - name: Checkout RevSearch repo
-      uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v2
 
-    - name: Setup Git credentials
-      run: |
-        git config --global user.name "ibadrather"
-        git config --global user.email "ibad.rather.ir@gmail.com"
-
-    - name: Clone appfolio repo
-      run: |
-        git clone https://x-access-token:${GITHUB_TOKEN}@github.com/ibadrather/appfolio.git appfolio-repo
-
-    - name: Copy RevSearchEngine folder to appfolio repo Backend folder
-      run: |
-        cp -R RevSearchEngine appfolio-repo/Backend
-
-    - name: Commit and push changes to appfolio repo
-      run: |
-        cd appfolio-repo
-        git add .
-        git commit -m "Sync RevSearchEngine to Backend"
-        git push
+    - name: Pushes RevSearchEngine folder to appfolio repo Backend folder
+      uses: datalbry/copy_folder_to_another_repo_action@1.0.0
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.IBADRATHER_FULL_GITHUB_ACESS_PAT }}
+      with:
+        source_folder: 'RevSearchEngine'
+        destination_repo: 'ibadrather/appfolio'
+        destination_folder: 'Backend/RevSearchEngine'
+        user_email: 'ibad.rather.ir@gmail.com'
+        user_name: 'ibadrather'
+        commit_msg: '[GHA] Sync RevSearchEngine to Backend'
