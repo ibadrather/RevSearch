@@ -15,16 +15,15 @@ jobs:
 
     - name: Setup Git credentials
       run: |
-        git config user.name "ibadrather"
-        git config user.email "ibad.rather.ir@gmail.com"
-
+        git config --global user.name "ibadrather"
+        git config --global user.email "ibad.rather.ir@gmail.com"
 
     - name: Clone appfolio repo
       env:
         GITHUB_TOKEN: ${{ secrets.IBADRATHER_FULL_GITHUB_ACESS_PAT }}
       run: |
-            git clone https://x-access-token:${GITHUB_TOKEN}@github.com/ibadrather/appfolio.git appfolio-repo
-  
+        git clone https://x-access-token:${GITHUB_TOKEN}@github.com/ibadrather/appfolio.git appfolio-repo
+
     - name: Copy RevSearchEngine folder to appfolio repo Backend folder
       run: |
         cp -R RevSearchEngine appfolio-repo/Backend
