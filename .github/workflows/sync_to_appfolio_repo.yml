@@ -1,0 +1,37 @@
+name: Sync RevSearchEngine folder to Appfolio Repo Backend folder
+
+on:
+  push:
+    branches:
+      - main  # Replace 'main' with the branch you want to trigger this workflow
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout RevSearch repo
+      uses: actions/checkout@v2
+
+    - name: Setup Git credentials
+      run: |
+        git config user.name "Your GitHub Username"
+        git config user.email "your_email@example.com"
+
+
+    - name: Clone appfolio repo
+      env:
+        GITHUB_TOKEN: ${{ secrets.IBADRATHER_FULL_GITHUB_ACESS_PAT }}
+      run: |
+            git clone https://x-access-token:${GITHUB_TOKEN}@github.com/ibadrather/appfolio.git appfolio-repo
+  
+    - name: Copy RevSearchEngine folder to appfolio repo Backend folder
+      run: |
+        cp -R RevSearchEngine appfolio-repo/Backend
+
+    - name: Commit and push changes to appfolio repo
+      run: |
+        cd appfolio-repo
+        git add .
+        git commit -m "Sync RevSearchEngine to Backend"
+        git push
