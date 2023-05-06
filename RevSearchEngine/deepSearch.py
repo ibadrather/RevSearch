@@ -8,12 +8,34 @@ pip install deepimagesearch
 import os
 import sys
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Get the absolute path of the parent directory of the script
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 # Add the parent directory to sys.path
 sys.path.append(parent_dir)
-
 
 
 from DeepImageSearch.DeepImageSearch import Load_Data, Search_Setup
@@ -23,7 +45,7 @@ os.system("clear")
 
 
 # Load images from a folder
-image_list_all = Load_Data().from_folder(['Car196_Combined/images'])
+image_list_all = Load_Data().from_folder(["Car196_Combined/images"])
 image_list = image_list_all[:]
 
 print("Number of images: ", len(image_list))
@@ -38,7 +60,7 @@ feature_extractor = CustomFeatureExtractor(
 search_engine = Search_Setup(
     image_list=image_list,
     custom_feature_extractor=feature_extractor,
-    custom_feature_extractor_name = "efficientnet_onnx",
+    custom_feature_extractor_name="efficientnet_onnx",
     # image_count=100,
 )
 
@@ -56,6 +78,8 @@ metadata = search_engine.get_image_metadata_file()
 # )
 
 
+image_path = "car.jpg"
+
 # Plot similar images
 # print(similar_images)
-search_engine.plot_similar_images(image_path = image_list[90],number_of_images=5)
+search_engine.plot_similar_images(image_path=image_path, number_of_images=5)

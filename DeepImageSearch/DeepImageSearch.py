@@ -181,11 +181,15 @@ class Search_Setup:
         f_data = self._get_feature(self.image_list)
         image_data["features"] = f_data
         image_data = image_data.dropna().reset_index(drop=True)
-        image_data.to_pickle(config.image_data_with_features_pkl(self.metadata_dir, self.model_name))
+        image_data.to_pickle(
+            config.image_data_with_features_pkl(self.metadata_dir, self.model_name)
+        )
         # print(
         #     f"\033[94m Image Meta Information Saved: [metadata-files/{self.model_name}/image_data_features.pkl]"
         # )
-        print("\033[94m Image Meta Information Saved: [os.path.join(self.metadata_dir, 'image_data_features.pkl')]")
+        print(
+            "\033[94m Image Meta Information Saved: [os.path.join(self.metadata_dir, 'image_data_features.pkl')]"
+        )
         return image_data
 
     def _start_indexing(self, image_data):
@@ -195,7 +199,9 @@ class Search_Setup:
         index = faiss.IndexFlatL2(d)
         features_matrix = np.vstack(image_data["features"].values).astype(np.float32)
         index.add(features_matrix)  # Add the features matrix to the index
-        faiss.write_index(index, config.image_features_vectors_idx(self.metadata_dir, self.model_name))
+        faiss.write_index(
+            index, config.image_features_vectors_idx(self.metadata_dir, self.model_name)
+        )
         # print(
         #     "\033[94m Saved The Indexed File:"
         #     + f"[metadata-files/{self.model_name}/image_features_vectors.idx]"
@@ -237,7 +243,9 @@ class Search_Setup:
         self.image_data = pd.read_pickle(
             config.image_data_with_features_pkl(self.metadata_dir, self.model_name)
         )
-        index = faiss.read_index(config.image_features_vectors_idx(self.metadta_dir, self.model_name))
+        index = faiss.read_index(
+            config.image_features_vectors_idx(self.metadta_dir, self.model_name)
+        )
 
         for new_image_path in tqdm(new_image_paths):
             # Extract features from the new image
@@ -261,15 +269,21 @@ class Search_Setup:
             index.add(np.array([feature], dtype=np.float32))
 
         # Save the updated metadata and index
-        self.image_data.to_pickle(config.image_data_with_features_pkl(self.metadata_dir, self.model_name))
-        faiss.write_index(index, config.image_features_vectors_idx(self.metadta_dir, self.model_name))
+        self.image_data.to_pickle(
+            config.image_data_with_features_pkl(self.metadata_dir, self.model_name)
+        )
+        faiss.write_index(
+            index, config.image_features_vectors_idx(self.metadta_dir, self.model_name)
+        )
 
         print(f"\033[92m New images added to the index: {len(new_image_paths)}")
 
     def _search_by_vector(self, v, n: int):
         self.v = v
         self.n = n
-        index = faiss.read_index(config.image_features_vectors_idx(self.metadata_dir, self.model_name))
+        index = faiss.read_index(
+            config.image_features_vectors_idx(self.metadata_dir, self.model_name)
+        )
         D, I = index.search(np.array([self.v], dtype=np.float32), self.n)
         return dict(zip(I[0], self.image_data.iloc[I[0]]["images_paths"].to_list()))
 

@@ -13,7 +13,9 @@ from typing import Dict, Tuple
 class CustomFeatureExtractor:
     def __init__(self, model_path: str):
         self.model_path = model_path
-        self.session, self.input_name, self.output_name = self.load_onnx_model(model_path)
+        self.session, self.input_name, self.output_name = self.load_onnx_model(
+            model_path
+        )
 
     @staticmethod
     def load_onnx_model(model_path: str):
