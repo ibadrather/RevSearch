@@ -2,8 +2,6 @@
 
 RevSearch is a Minimum Viable Product (MVP) showcasing a car reverse image search application. It leverages cutting-edge machine learning, computer vision, and cloud-based technologies to provide an efficient and accurate image search experience. Built as a self-initiative, this project demonstrates end-to-end machine learning workflow expertise.
 
-**Note:** The deployment has been taken down due to running costs.
-
 ---
 
 ## Workflow
