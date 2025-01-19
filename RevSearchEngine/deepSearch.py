@@ -5,6 +5,7 @@ You can follow these steps to integrate your custom model into DeepImageSearch:
 Install the DeepImageSearch library:
 pip install deepimagesearch
 """
+
 import os
 import sys
 

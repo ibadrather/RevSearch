@@ -8,6 +8,7 @@
     test_filter_images: tests the filter_images method using a MagicMock to mock the fetch_image_data method, 
     thus removing the external dependency on the requests library.
 """
+
 import pytest
 import io
 import os
